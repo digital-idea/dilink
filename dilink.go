@@ -131,7 +131,7 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				if strings.Contains(scape, "ghost") || strings.Contains(scape, "mk2") || strings.Contains(scape, "line") || strings.Contains(scape, "st6") || strings.Contains(scape, "magician") || strings.Contains(scape, "lghdr") || strings.Contains(scape, "cheongshim") || strings.Contains(scape, "itoys") {
+				if strings.Contains(scape, "line") || strings.Contains(scape, "st6") || strings.Contains(scape, "cheongshim") {
 					os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n7")
 					os.Setenv("NUKE_OFX","/usr/OFX")
 					os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
@@ -145,13 +145,6 @@ func main() {
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 					exec.Command("/usr/local/Nuke9.0v7/Nuke9.0", "--nukex", scape).Run()
 				}
-				/*
-				os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n7")
-				os.Setenv("NUKE_OFX","/usr/OFX")
-				os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
-				os.Setenv("BROWSER","firefox")
-				exec.Command("/usr/local/Nuke7.0v10/Nuke7.0", "--nukex", scape).Run()
-				*/
 
 			} else if strings.HasSuffix(argstr, ".mov") || strings.HasSuffix(argstr, ".jpg") || strings.HasSuffix(argstr, ".png") || strings.HasSuffix(argstr, ".exr") || strings.HasSuffix(argstr, ".tga") || strings.HasSuffix(argstr, ".psd") || strings.HasSuffix(argstr, ".dpx") {
 				scape, err := url.QueryUnescape(argstr)
