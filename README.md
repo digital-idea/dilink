@@ -8,3 +8,8 @@
 go get -u http://gogs.idea.co.kr/khw7096/dipath.git
 sh build.sh
 ```
+
+# protocol install
+```
+dilink install
+```
