@@ -10,7 +10,7 @@ import (
 	"flag"
 	"net/url"
 	"runtime"
-	"dipath"
+	"di/dipath"
 )
 
 const RV_win = "C:\\Program Files (x86)\\Tweak\\RV-3.12.20-32\\bin\\rv.exe"
@@ -140,6 +140,7 @@ func main() {
 				} else {
 					os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n9")
 					os.Setenv("NUKE_OFX","/usr/OFX")
+					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP","10.0.99.15")
 					os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
 					os.Setenv("BROWSER","firefox")
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
