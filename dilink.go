@@ -160,6 +160,7 @@ func main() {
 
 				if strings.Contains(scape, ";") {
 					scapelist := strings.Split(scape, ";")
+
 					exec.Command(RV_lin, scapelist...).Run()
 				} else {
 					exec.Command(RV_lin, scape).Run()
@@ -188,7 +189,7 @@ func main() {
 					log.Fatal(err)
 				}
 				exec.Command("/lustre/INHouse/CentOS/bin/abcview", scape).Run()
-			} else if strings.HasSuffix(argstr, ".py") || strings.HasSuffix(argstr, ".go") || strings.HasSuffix(argstr, ".txt") || strings.HasSuffix(argstr, ".sh") || strings.HasSuffix(argstr, ".md") || strings.HasSuffix(argstr, ".html") || strings.HasSuffix(argstr, ".css") || strings.HasSuffix(argstr, ".css") || strings.HasSuffix(argstr, ".env") || strings.HasSuffix(argstr, ".reg"){
+			} else if strings.HasSuffix(argstr, ".py") || strings.HasSuffix(argstr, ".go") || strings.HasSuffix(argstr, ".txt") || strings.HasSuffix(argstr, ".md") || strings.HasSuffix(argstr, ".html") || strings.HasSuffix(argstr, ".css") || strings.HasSuffix(argstr, ".css") || strings.HasSuffix(argstr, ".env") || strings.HasSuffix(argstr, ".reg"){
 				scape, err := url.QueryUnescape(argstr)
 				if err != nil {
 					log.Fatal(err)
