@@ -131,12 +131,11 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				if strings.Contains(scape, "line") || strings.Contains(scape, "st6") || strings.Contains(scape, "cheongshim") {
-					os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n7")
+				if strings.Contains(scape, "lady") {
+					os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
 					os.Setenv("NUKE_OFX","/usr/OFX")
-					os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
 					os.Setenv("BROWSER","firefox")
-					exec.Command("/usr/local/Nuke7.0v10/Nuke7.0", "--nukex", scape).Run()
+					exec.Command("/usr/local/Nuke10.0v3/Nuke10.0", "--nukex", scape).Run()
 				} else {
 					os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n9")
 					os.Setenv("NUKE_OFX","/usr/OFX")
