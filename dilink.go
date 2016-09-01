@@ -93,9 +93,8 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n7")
+				os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
 				os.Setenv("NUKE_OFX","/usr/OFX")
-				os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
 				exec.Command(RV_osx, scape).Run()
 			} else if strings.HasSuffix(argstr, ".mov") || strings.HasSuffix(argstr, ".jpg") {
 				scape, err := url.QueryUnescape(argstr)
@@ -134,13 +133,14 @@ func main() {
 				if strings.Contains(scape, "lady") {
 					os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
 					os.Setenv("NUKE_OFX","/usr/OFX")
+					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP","10.0.99.15")
 					os.Setenv("BROWSER","firefox")
+					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 					exec.Command("/usr/local/Nuke10.0v3/Nuke10.0", "--nukex", scape).Run()
 				} else {
-					os.Setenv("NUKE_PATH","/lustre/INHouse/nukeGlobals_n9")
+					os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
 					os.Setenv("NUKE_OFX","/usr/OFX")
 					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP","10.0.99.15")
-					os.Setenv("OCIO","/lustre/INHouse/Tool/ocio/aces_0.7.1/config.ocio")
 					os.Setenv("BROWSER","firefox")
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 					exec.Command("/usr/local/Nuke9.0v7/Nuke9.0", "--nukex", scape).Run()
