@@ -13,8 +13,8 @@ import (
 	"di/dipath"
 )
 
-const RV_win = "C:\\Program Files (x86)\\Tweak\\RV-3.12.20-32\\bin\\rv.exe"
-const RV_lin = "/opt/rv-Linux-x86-64-4.0.10/bin/rv"
+const RV_win = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
+const RV_lin = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
 const RV_osx = "/Applications/RV64.app/Contents/MacOS/RV64"
 const REGCODE = `Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\dilink]
@@ -95,6 +95,7 @@ func main() {
 				}
 				os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
 				os.Setenv("NUKE_OFX","/usr/OFX")
+				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
 				exec.Command(RV_osx, scape).Run()
 			} else if strings.HasSuffix(argstr, ".mov") || strings.HasSuffix(argstr, ".jpg") {
 				scape, err := url.QueryUnescape(argstr)
@@ -136,6 +137,7 @@ func main() {
 					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP","10.0.99.15")
 					os.Setenv("BROWSER","firefox")
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
+					os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
 					exec.Command("/usr/local/Nuke10.0v3/Nuke10.0", "--nukex", scape).Run()
 				} else {
 					os.Setenv("NUKE_PATH","/lustre/INHouse/nuke")
@@ -143,6 +145,7 @@ func main() {
 					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP","10.0.99.15")
 					os.Setenv("BROWSER","firefox")
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
+					os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
 					exec.Command("/usr/local/Nuke9.0v7/Nuke9.0", "--nukex", scape).Run()
 				}
 
