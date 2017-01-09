@@ -137,14 +137,14 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				if strings.Contains(scape, "lady") {
+				if strings.Contains(scape, "lady") || strings.Contains(scape, "gunhamdo") {
 					os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 					os.Setenv("NUKE_OFX", "/usr/OFX")
 					os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
 					os.Setenv("BROWSER", "firefox")
 					os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 					os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
-					exec.Command("/usr/local/Nuke10.0v3/Nuke10.0", "--nukex", scape).Run()
+					exec.Command("/usr/local/Nuke10.0v5/Nuke10.0", "--nukex", scape).Run()
 				} else {
 					os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 					os.Setenv("NUKE_OFX", "/usr/OFX")
