@@ -132,6 +132,7 @@ func main() {
 				os.Setenv("BROWSER", "firefox")
 				os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
+				os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
 				exec.Command("/usr/local/Nuke10.0v5/Nuke10.0", "--nukex", scape).Run()
 			} else {
 				os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
@@ -140,6 +141,7 @@ func main() {
 				os.Setenv("BROWSER", "firefox")
 				os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
 				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
+				os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
 				exec.Command("/usr/local/Nuke9.0v7/Nuke9.0", "--nukex", scape).Run()
 			}
 
