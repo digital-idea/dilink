@@ -125,7 +125,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			if strings.Contains(scape, "lady") || strings.Contains(scape, "gunhamdo") || strings.Contains(scape, "queen") {
+			if strings.Contains(scape, "lady") || strings.Contains(scape, "gunhamdo") || strings.Contains(scape, "queen") || strings.Contains(scape, "banghwa") {
 				os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 				os.Setenv("NUKE_OFX", "/usr/OFX")
 				os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
