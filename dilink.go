@@ -125,16 +125,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			if strings.Contains(scape, "lady") || strings.Contains(scape, "gunhamdo") || strings.Contains(scape, "queen") || strings.Contains(scape, "banghwa") {
-				os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
-				os.Setenv("NUKE_OFX", "/usr/OFX")
-				os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
-				os.Setenv("BROWSER", "firefox")
-				os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
-				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
-				os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
-				exec.Command("/usr/local/Nuke10.0v5/Nuke10.0", "--nukex", scape).Run()
-			} else {
+			if strings.Contains(scape, "oneday") || strings.Contains(scape, "thesea2") || strings.Contains(scape, "adventure") {
 				os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 				os.Setenv("NUKE_OFX", "/usr/OFX")
 				os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
@@ -143,6 +134,16 @@ func main() {
 				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
 				os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
 				exec.Command("/usr/local/Nuke9.0v7/Nuke9.0", "--nukex", scape).Run()
+			} else {
+				os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
+				os.Setenv("NUKE_OFX", "/usr/OFX")
+				os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
+				os.Setenv("BROWSER", "firefox")
+				os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
+				os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
+				os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
+				exec.Command("/usr/local/Nuke10.0v5/Nuke10.0", "--nukex", scape).Run()
+
 			}
 
 		} else if strings.HasSuffix(argstr, ".mov") || strings.HasSuffix(argstr, ".jpg") || strings.HasSuffix(argstr, ".png") || strings.HasSuffix(argstr, ".exr") || strings.HasSuffix(argstr, ".tga") || strings.HasSuffix(argstr, ".psd") || strings.HasSuffix(argstr, ".dpx") {
