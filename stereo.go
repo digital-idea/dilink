@@ -65,6 +65,9 @@ func ToRvStereo(movlist []string) []string {
 				isStereo = true
 			}
 		}
+
+		// 입체가 아닌 mov이댜. 그냥 append한다.
+		playlist = append(playlist, movfile)
 	}
 
 	if isStereo {
