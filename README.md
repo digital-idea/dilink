@@ -9,7 +9,21 @@ go get -u http://gogs.idea.co.kr/khw7096/dipath.git
 sh build.sh
 ```
 
-# protocol install
+# 프로토콜 설치(CentOS6, Windows7)
 ```
 dilink install
+```
+
+# 프로토콜 설치(CentOS7)
+- 터미널을 열고 아래처럼 타이핑 합니다.
+- 개발자
+
+```
+$ tcsh /lustre/INHouse/Tool/dilink/install_CentOS7_dev.sh
+```
+
+- 사용자
+
+```
+$ tcsh /lustre/INHouse/Tool/dilink/install_CentOS7.sh
 ```
