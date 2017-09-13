@@ -14,6 +14,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"syscall"
 )
 
 const RV_WIN = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
@@ -146,6 +147,10 @@ func runMac(scape string) {
 func runLin(scape string) {
 	switch strings.ToLower(filepath.Ext(scape)) {
 	case ".nk":
+		// 회사 셋팅에서 사용자 .bashrc에 보면 IP팀이 umask 0002라고 설정해놓았다.
+		// dilink를 통해서 뉴크를 실행하기 때문에 dilink 도 umask 설정이 필요하다.
+		// 이렇게 설정이되어야 뉴크실행후 뉴크가 만드는 폴더에 대해서 권한문제가 발생하지 않는다.
+		syscall.Umask(0002)
 		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 		os.Setenv("NUKE_OFX", "/usr/OFX")
 		os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
