@@ -175,7 +175,26 @@ func runLin(scape string) {
 			playlist = append(playlist, dipath.Win2lin(i))
 		}
 		// 플레이 리스트를 받아서 입체 체크를 한다.
-		movlist := ToRvStereo(playlist)
+		movlist := []string{}
+		isStereo := false
+		for _, mov := range playlist {
+			cmdlist, hasStereo := ToRvStereo(mov)
+			if !hasStereo {
+				movlist = append(movlist, mov)
+				continue
+			}
+			movlist = append(movlist, cmdlist...)
+			if !isStereo {
+				isStereo = true
+			}
+
+		}
+		if isStereo {
+			// RV에서 입체 재생을 위해서는 옵션 마지막에 "-stereo scanline" 옵션 필요함.
+			movlist = append(movlist, "-stereo")
+			movlist = append(movlist, "scanline")
+		}
+		fmt.Println(movlist)
 		err := exec.Command(RV_lin, movlist...).Run()
 		if err != nil {
 			log.Fatal(err)
