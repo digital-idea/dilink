@@ -162,17 +162,21 @@ func runLin(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".mov", ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif", ".rv":
+	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif", ".rv":
 		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
-		if strings.Contains(scape, ";") {
-			scapelist := []string{}
-			for _, i := range strings.Split(scape, ";") {
-				scapelist = append(scapelist, dipath.Win2lin(i))
-			}
-			exec.Command(RV_lin, scapelist...).Run()
-			return
-		}
 		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+	case ".mov":
+		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
+		playlist := []string{}
+		for _, i := range strings.Split(scape, ";") {
+			playlist = append(playlist, dipath.Win2lin(i))
+		}
+		// 플레이 리스트를 받아서 입체 체크를 한다.
+		movlist := ToRvStereo(playlist)
+		err := exec.Command(RV_lin, movlist...).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
