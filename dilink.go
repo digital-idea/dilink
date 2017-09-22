@@ -194,7 +194,6 @@ func runLin(scape string) {
 			movlist = append(movlist, "-stereo")
 			movlist = append(movlist, "scanline")
 		}
-		fmt.Println(movlist)
 		err := exec.Command(RV_lin, movlist...).Run()
 		if err != nil {
 			log.Fatal(err)
