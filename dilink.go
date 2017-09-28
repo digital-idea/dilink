@@ -239,7 +239,18 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	default:
-		err := exec.Command("nautilus", scape).Run()
+		browser := "nautilus"
+		// 리눅스 release정보를 가지고 온다.
+		out, err := exec.Command("cat", "/etc/redhat-release").Output()
+		if err != nil {
+			browser = "nautilus"
+		}
+		release := strings.TrimSuffix(string(out), "\n")
+		if strings.Contains(release, "CentOS Linux release 7.2.1511 (Core)") {
+			// 회사는 CentOS7에서는 caja를 기본 브라우저로 사용한다.
+			browser = "caja"
+		}
+		err = exec.Command(browser, scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
