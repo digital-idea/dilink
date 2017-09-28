@@ -183,11 +183,11 @@ func runLin(scape string) {
 				movlist = append(movlist, mov)
 				continue
 			}
+			// RV는 left, right 미디어를 같은 그룹을 묶을 때 "[,]"를 사용한다.
+			movlist = append(movlist, "[")
 			movlist = append(movlist, cmdlist...)
-			if !isStereo {
-				isStereo = true
-			}
-
+			movlist = append(movlist, "]")
+			isStereo = true
 		}
 		if isStereo {
 			// RV에서 입체 재생을 위해서는 옵션 마지막에 "-stereo scanline" 옵션 필요함.
