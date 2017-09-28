@@ -11,7 +11,7 @@ import (
 // ToRvStereo함수는 입체조건을 체크하고,
 // 조건이 맞다면 RV에서 입체로 재생할 수 있는 문자를 반환한다.
 // 만약 /show/test_left.mov파일에 짝이 있다면
-// []string{"[", "/show/test_left.mov", "/show/test_right.mov", "]"}, true 를 반환한다.
+// []string{"/show/test_left.mov", "/show/test_right.mov"}, true 를 반환한다.
 // 만약 /show/test_left.mov 파일에 짝이 없다면
 // []string{}, false 를 반환한다.
 func ToRvStereo(movfile string) ([]string, bool) {
@@ -37,7 +37,7 @@ func ToRvStereo(movfile string) ([]string, bool) {
 			return []string{}, false
 		}
 		// 입체조건이 성립되었다.
-		return []string{"[", movfile, rightmov, "]"}, true
+		return []string{movfile, rightmov}, true
 	}
 
 	// left 규약을 어기고 작업자가 "right" 문자를 CSI에 등록했을때의 상황도 대비한다.
@@ -48,7 +48,7 @@ func ToRvStereo(movfile string) ([]string, bool) {
 			return []string{}, false
 		}
 		// 입체조건이 성립되었다.
-		return []string{"[", leftmov, movfile, "]"}, true
+		return []string{leftmov, movfile}, true
 	}
 	return []string{}, false
 }
