@@ -62,7 +62,7 @@ func installDilink() {
 		os.Exit(0)
 	case "darwin":
 		fmt.Println("macOS는 수동으로 브라우저에서 dilink를 설정해야 합니다.")
-		os.Exit(0)
+		os.Exit(1)
 	case "linux":
 		err := exec.Command("gconftool-2", "--set", "/desktop/gnome/url-handlers/dilink/command", "--type=string", "/lustre/INHouse/CentOS/bin/dilink %s").Run()
 		if err != nil {
@@ -80,7 +80,7 @@ func installDilink() {
 		os.Exit(0)
 	default:
 		fmt.Println("dilink를 설치할 수 없는 OS입니다.")
-		os.Exit(0)
+		os.Exit(1)
 	}
 }
 
@@ -239,7 +239,18 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	default:
-		err := exec.Command("nautilus", scape).Run()
+		browser := "nautilus"
+		// 리눅스 release정보를 가지고 온다.
+		out, err := exec.Command("cat", "/etc/redhat-release").Output()
+		if err != nil {
+			log.Fatal(err)
+		}
+		release := strings.TrimSuffix(string(out), "\n")
+		if strings.Contains(release, "CentOS Linux release 7.2.1511 (Core)") {
+			// 회사는 CentOS7에서는 caja를 기본 브라우저로 사용한다.
+			browser = "caja"
+		}
+		err = exec.Command(browser, scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
