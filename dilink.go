@@ -243,7 +243,7 @@ func runLin(scape string) {
 		// 리눅스 release정보를 가지고 온다.
 		out, err := exec.Command("cat", "/etc/redhat-release").Output()
 		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
+			log.Fatal(err)
 		}
 		release := strings.TrimSuffix(string(out), "\n")
 		if strings.Contains(release, "CentOS Linux release 7.2.1511 (Core)") {
