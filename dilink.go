@@ -257,6 +257,42 @@ func runLin(scape string) {
 	}
 }
 
+// 해당 경로를 체크하여 PROJECT, SEQ, SHOT의 환경변수 설정
+func setProjectnShot(scape string) {
+	var project, seq, shot string
+	path := scape
+	project, err := dipath.Project(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	seq, err = dipath.Seq(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	shot, err = dipath.Shot(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if project != "" && seq != "" && shot != "" {
+		err = os.Setenv("PROJECT", project)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = os.Setenv("SEQ", seq)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = os.Setenv("SHOT", shot)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("os.Getenv() 출력")
+		fmt.Println("PROJECT: " + os.Getenv("PROJECT"))
+		fmt.Println("SEQ: " + os.Getenv("SEQ"))
+		fmt.Println("SHOT: " + os.Getenv("SHOT"))
+	}
+}
+
 func main() {
 	flag.Parse()
 	if len(flag.Args()) < 1 {
@@ -280,6 +316,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	setProjectnShot(scape) //`$PROJECT, $SEQ, $SHOT 설정`
 	switch runtime.GOOS {
 	case "darwin":
 		runMac(scape)
