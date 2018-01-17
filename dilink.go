@@ -263,28 +263,28 @@ func setProjectnShot(scape string) {
 	path := scape
 	project, err := dipath.Project(path)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	seq, err = dipath.Seq(path)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	shot, err = dipath.Shot(path)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	if project != "" && seq != "" && shot != "" {
 		err = os.Setenv("PROJECT", project)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 		err = os.Setenv("SEQ", seq)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 		err = os.Setenv("SHOT", shot)
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 	}
 }
