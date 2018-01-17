@@ -286,10 +286,6 @@ func setProjectnShot(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println("os.Getenv() 출력")
-		fmt.Println("PROJECT: " + os.Getenv("PROJECT"))
-		fmt.Println("SEQ: " + os.Getenv("SEQ"))
-		fmt.Println("SHOT: " + os.Getenv("SHOT"))
 	}
 }
 
