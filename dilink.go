@@ -163,7 +163,6 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif":
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
 		imglist := []string{}
 		for _, i := range strings.Split(scape, ";") {
 			imglist = append(imglist, dipath.Win2lin(i))
