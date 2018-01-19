@@ -172,7 +172,7 @@ func runLin(scape string) {
 		imagelist := []string{}
 		for _, img := range imglist {
 			for _, ext := range imgext {
-				if strings.Contains(img, ext) {
+				if !strings.Contains(img, ext) {
 					continue
 				}
 				imagelist = append(imagelist, img)
