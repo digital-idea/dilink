@@ -162,13 +162,13 @@ func runLin(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif", ".rv":
+	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif":
 		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
 		imglist := []string{}
 		for _, i := range strings.Split(scape, ";") {
 			imglist = append(imglist, dipath.Win2lin(i))
 		}
-		imgext := []string{".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif", ".rv"}
+		imgext := []string{".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif"}
 		imagelist := []string{}
 		for _, img := range imglist {
 			for _, ext := range imgext {
@@ -179,6 +179,12 @@ func runLin(scape string) {
 			}
 		}
 		err := exec.Command(RV_lin, imagelist...).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+	case ".rv":
+		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
+		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
