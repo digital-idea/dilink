@@ -257,6 +257,12 @@ func runLin(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
+	case ".hip":
+		syscall.Umask(0002)
+		err := exec.Command("gnome-terminal", "-x", "h", scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
 	default:
 		browser := "nautilus"
 		// 리눅스 release정보를 가지고 온다.
