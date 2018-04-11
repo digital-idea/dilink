@@ -182,13 +182,15 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	case ".rv":
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
+		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1")                         // Prores코덱을 위해서 활성화 한다.
+		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath") // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".mov":
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
+		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1")                         // Prores코덱을 위해서 활성화 한다.
+		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath") // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		playlist := []string{}
 		for _, i := range strings.Split(scape, ";") {
 			playlist = append(playlist, dipath.Win2lin(i))
@@ -218,6 +220,8 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	case ".mp4":
+		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1")                         // Prores코덱을 위해서 활성화 한다.
+		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath") // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
