@@ -163,6 +163,7 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif":
+		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath") // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		imglist := []string{}
 		for _, i := range strings.Split(scape, ";") {
 			imglist = append(imglist, dipath.Win2lin(i))
