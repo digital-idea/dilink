@@ -180,7 +180,7 @@ func runLin(scape string) {
 		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv, import numpy 를 로딩하기 위해서 필요하다.
+		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_lin, imagelist...).Run()
 		if err != nil {
 			log.Fatal(err)
@@ -190,7 +190,7 @@ func runLin(scape string) {
 		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv, import numpy 를 로딩하기 위해서 필요하다.
+		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
@@ -200,7 +200,7 @@ func runLin(scape string) {
 		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv, import numpy 를 로딩하기 위해서 필요하다.
+		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
 		playlist := []string{}
 		for _, i := range strings.Split(scape, ";") {
 			playlist = append(playlist, dipath.Win2lin(i))
@@ -234,7 +234,7 @@ func runLin(scape string) {
 		os.Setenv("RV_SUPPORT_PATH", "/lustre/INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv, import numpy 를 로딩하기 위해서 필요하다.
+		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
