@@ -112,23 +112,6 @@ func runWin(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".jpg", ".png", ".exr", ".tga", ".psd", ".dpx", ".tif":
-		os.Setenv("RV_SUPPORT_PATH", "//10.0.200.100/_lustre_INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
-		if strings.Contains(scape, ";") {
-			var imglist []string
-			pathlist := strings.Split(scape, ";")
-			for _, i := range pathlist {
-				imglist = append(imglist, dipath.Lin2win(i))
-			}
-			err := exec.Command(RV_WIN, imglist...).Run()
-			if err != nil {
-				log.Fatal(err)
-			}
-		}
-		err := exec.Command(RV_WIN, dipath.Lin2win(scape)).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 	default:
 		err := exec.Command("cmd", "/C", "start", "", dipath.Lin2win(scape)).Run()
 		if err != nil {
