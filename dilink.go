@@ -88,6 +88,7 @@ func installDilink() {
 func runWin(scape string) {
 	switch strings.ToLower(filepath.Ext(scape)) {
 	case ".mov":
+		os.Setenv("RV_SUPPORT_PATH", "//10.0.200.100/_lustre_INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		if strings.Contains(scape, ";") {
 			var movlist []string
 			pathlist := strings.Split(scape, ";")
@@ -106,6 +107,7 @@ func runWin(scape string) {
 		}
 		return
 	case ".rv":
+		os.Setenv("RV_SUPPORT_PATH", "//10.0.200.100/_lustre_INHouse/rv/supportPath")                            // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
 		err := exec.Command(RV_WIN, dipath.Lin2win(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
@@ -150,7 +152,7 @@ func runLin(scape string) {
 		// 회사 셋팅에서 사용자 .bashrc에 보면 IP팀이 umask 0002라고 설정해놓았다.
 		// dilink를 통해서 뉴크를 실행하기 때문에 dilink 도 umask 설정이 필요하다.
 		// 이렇게 설정이되어야 뉴크실행후 뉴크가 만드는 폴더에 대해서 권한문제가 발생하지 않는다.
-		syscall.Umask(0002)
+		syscall.Umask(0002) // 윈도우는 지원 안함.
 		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 		os.Setenv("NUKE_OFX", "/usr/OFX")
 		os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
@@ -275,7 +277,7 @@ func runLin(scape string) {
 			log.Fatal(err)
 		}
 	case ".hip":
-		syscall.Umask(0002)
+		syscall.Umask(0002) // 윈도우는 지원 안함.
 		err := exec.Command("gnome-terminal", "-x", "h", scape).Run()
 		if err != nil {
 			log.Fatal(err)
