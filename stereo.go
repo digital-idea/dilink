@@ -8,7 +8,7 @@ import (
 
 // RV에서 입체를 보기위한 테스트파일 : test/view_stereo.sh
 
-// ToRvStereo함수는 입체조건을 체크하고,
+// ToRvStereo 함수는 입체조건을 체크하고,
 // 조건이 맞다면 RV에서 입체로 재생할 수 있는 문자를 반환한다.
 // 만약 /show/test_left.mov파일에 짝이 있다면
 // []string{"/show/test_left.mov", "/show/test_right.mov"}, true 를 반환한다.

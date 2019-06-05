@@ -1,5 +1,5 @@
 #!/bin/tcsh -f
-echo "Installing rvlink protocol handler for XDG"
+echo "Installing dilink protocol handler for XDG"
 
 set desktopInstall = "`which desktop-file-install`"
 

@@ -1,9 +1,9 @@
-// dilink 는 웹에서 dilink:// 로 시작하는 프로토콜을 인식하고,
-// 관련 응용프로그램으로 URL값을 넘겨주는 프로그램이다.
 package main
 
+// dilink 는 웹에서 dilink:// 로 시작하는 프로토콜을 인식하고,
+// 관련 응용프로그램으로 URL값을 넘겨주는 프로그램이다.
+
 import (
-	"di/dipath"
 	"flag"
 	"fmt"
 	"log"
@@ -15,12 +15,14 @@ import (
 	"runtime"
 	"strings"
 	"syscall"
+
+	"github.com/didev/dipath"
 )
 
-const RV_WIN = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
-const RV_lin = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
-const RV_MAC = "/Applications/RV64.app/Contents/MacOS/RV64"
-const REGCODE_WIN = `Windows Registry Editor Version 5.00
+const rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
+const rvLinuxAppPath = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
+const rvMacosAppPath = "/Applications/RV64.app/Contents/MacOS/RV64"
+const windowsRegcode = `Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\dilink]
 @="URL:DIlink Protocol"
 "URL Protocol"=""
@@ -49,7 +51,7 @@ func installDilink() {
 			fmt.Fprintf(os.Stderr, "dilink: can't create %s, %s\n", user.HomeDir+"\\"+"dilink.reg", err)
 		}
 		//윈도우즈라서 캐리지리턴으로 문자열을 바꾸었다.
-		if _, err := regfile.Write([]byte(strings.Replace(REGCODE_WIN, "\n", "\r\n", -1))); err != nil {
+		if _, err := regfile.Write([]byte(strings.Replace(windowsRegcode, "\n", "\r\n", -1))); err != nil {
 			fmt.Fprintf(os.Stderr, "dilink: can't save %s, %s\n", user.HomeDir+"\\"+"dilink.reg", err)
 		}
 		regfile.Close()
@@ -95,20 +97,20 @@ func runWin(scape string) {
 			for _, i := range pathlist {
 				movlist = append(movlist, dipath.Lin2win(i))
 			}
-			err := exec.Command(RV_WIN, movlist...).Run()
+			err := exec.Command(rvWindowsAppPath, movlist...).Run()
 			if err != nil {
 				log.Fatal(err)
 			}
 			return
 		}
-		err := exec.Command(RV_WIN, dipath.Lin2win(scape)).Run()
+		err := exec.Command(rvWindowsAppPath, dipath.Lin2win(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 		return
 	case ".rv":
 		os.Setenv("RV_SUPPORT_PATH", "//10.0.200.100/_lustre_INHouse/rv/supportPath") // 회사 RV 파이프라인툴을 로딩하기 위해서 필요하다.
-		err := exec.Command(RV_WIN, dipath.Lin2win(scape)).Run()
+		err := exec.Command(rvWindowsAppPath, dipath.Lin2win(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -127,13 +129,13 @@ func runMac(scape string) {
 		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
 		os.Setenv("NUKE_OFX", "/usr/OFX")
 		os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
-		err := exec.Command(RV_MAC, scape).Run()
+		err := exec.Command(rvMacosAppPath, scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".mov", ".jpg":
 		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
-		err := exec.Command(RV_MAC, scape).Run()
+		err := exec.Command(rvMacosAppPath, scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -183,7 +185,7 @@ func runLin(scape string) {
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
-		err := exec.Command(RV_lin, imagelist...).Run()
+		err := exec.Command(rvLinuxAppPath, imagelist...).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -193,7 +195,7 @@ func runLin(scape string) {
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
-		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
+		err := exec.Command(rvLinuxAppPath, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -227,7 +229,7 @@ func runLin(scape string) {
 			movlist = append(movlist, "-stereo")
 			movlist = append(movlist, "scanline")
 		}
-		err := exec.Command(RV_lin, movlist...).Run()
+		err := exec.Command(rvLinuxAppPath, movlist...).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -237,7 +239,7 @@ func runLin(scape string) {
 		os.Setenv("PKG_CONFIG_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/pkgconfig")          // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("LD_LIBRARY_PATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib")                    // RV플러그인중 OpenCV를 로딩하기 위해서 필요함.
 		os.Setenv("PYTHONPATH", "/lustre/INHouse/Tool/opencv/v3.2.0/lib/python2.7/site-packages") // import cv2, import numpy 를 로딩하기 위해서 필요하다.
-		err := exec.Command(RV_lin, dipath.Win2lin(scape)).Run()
+		err := exec.Command(rvLinuxAppPath, dipath.Win2lin(scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
