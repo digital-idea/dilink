@@ -1,5 +1,5 @@
-module github.com/didev/dilink
+module github.com/digital-idea/dilink
 
 go 1.12
 
-require github.com/didev/dipath v0.0.0-20190605075522-d31ebf5a65d6
+require github.com/digital-idea/dipath v0.0.0-20190606073246-5cc149f252b0

@@ -1,15 +1,14 @@
 # dilink
-- 웹에서 사용하기위한 dilink 프로토콜입니다.
-- 응용프로그램, 기능을 웹에서 구현하기 위해서 제작되었습니다.
-- 윈도우즈에서는 admin 계정으로 등록해주세요.
 
-#### 기본정보
-- 개발일시 : '15.12
-- 관리부서 : 파이프라인팀
+![travisCI](https://secure.travis-ci.org/digital-idea/dilink.png)
 
-#### install
+웹에서 사용하기위한 웹 프로토콜입니다.
+응용프로그램을 웹에서 실행하기 위해서 제작되었습니다.
+윈도우즈에서는 admin 계정으로 등록해주세요.
+
+#### Install
 ```
-go get -u https://github.com/didev/dipath.git
+go get -u https://github.com/digital-idea/dipath.git
 sh build.sh
 ```
 

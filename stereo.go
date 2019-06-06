@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-// RV에서 입체를 보기위한 테스트파일 : test/view_stereo.sh
-
 // ToRvStereo 함수는 입체조건을 체크하고,
 // 조건이 맞다면 RV에서 입체로 재생할 수 있는 문자를 반환한다.
 // 만약 /show/test_left.mov파일에 짝이 있다면

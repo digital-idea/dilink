@@ -16,7 +16,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/didev/dipath"
+	"github.com/digital-idea/dipath"
 )
 
 const rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
