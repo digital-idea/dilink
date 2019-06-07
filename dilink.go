@@ -22,6 +22,7 @@ const (
 	rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
 	rvLinuxAppPath   = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
 	rvMacosAppPath   = "/Applications/RV64.app/Contents/MacOS/RV64"
+	protocol         = "dilink://"
 )
 
 // Windows 액션
@@ -283,15 +284,14 @@ func main() {
 	flag.Parse()
 	if len(flag.Args()) < 1 {
 		fmt.Fprintf(os.Stdout, "명령를 실행하기 위한 인수가 충분하지 않습니다.\n")
-		fmt.Fprintf(os.Stdout, "dilink 설치를 원하시면 터미널에서 'dilink install'이라고 타이핑 해주세요.\n")
 		os.Exit(1)
 	}
 	// dilink 프로토콜이 올바르게 써져있는지 체크함.
-	if !strings.HasPrefix(flag.Args()[0], "dilink://") {
-		fmt.Fprintf(os.Stdout, "인수가 dilink://로 시작하지 않습니다. 종료합니다.\n")
+	if !strings.HasPrefix(flag.Args()[0], protocol) {
+		fmt.Fprintf(os.Stdout, "인수가 %s 로 시작하지 않습니다. 종료합니다.\n", protocol)
 		os.Exit(1)
 	}
-	uri := strings.TrimPrefix(flag.Args()[0], "dilink://")
+	uri := strings.TrimPrefix(flag.Args()[0], protocol)
 	// URI를 통해서 문자를 받기 때문에 %3A -> ":", %2F -> "/" 같은 문자가 섞일 수 있다.
 	// 이러한 문자를 QueryUnescape 함수를 통해서 1차 정리한다.
 	scape, err := url.QueryUnescape(uri)
