@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+[HKEY_CLASSES_ROOT\dilink]
+@="URL:DIlink Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\dilink\DefaultIcon]
+@="dilink.exe,1"
+
+[HKEY_CLASSES_ROOT\dilink\shell]
+
+[HKEY_CLASSES_ROOT\dilink\shell\open]
+
+[HKEY_CLASSES_ROOT\dilink\shell\open\command]
+@="\"\\\\10.0.200.100\\_lustre_INHouse\\Windows\\bin\\dilink.exe\" \"%1\""

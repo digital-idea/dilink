@@ -1,7 +1,7 @@
 package main
 
-// dilink 는 웹에서 dilink:// 로 시작하는 프로토콜을 인식하고,
-// 관련 응용프로그램으로 URL값을 넘겨주는 프로그램이다.
+// dilink 는 웹에서 dilink:// 로 시작하는 URL을 인식하고,
+// dilink 명령어에 URL 값을 넘겨 관련 응용프로그램을 실행하는 프로그램이다.
 
 import (
 	"flag"
@@ -10,7 +10,6 @@ import (
 	"net/url"
 	"os"
 	"os/exec"
-	"os/user"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -19,72 +18,11 @@ import (
 	"github.com/digital-idea/dipath"
 )
 
-const rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
-const rvLinuxAppPath = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
-const rvMacosAppPath = "/Applications/RV64.app/Contents/MacOS/RV64"
-const windowsRegcode = `Windows Registry Editor Version 5.00
-[HKEY_CLASSES_ROOT\dilink]
-@="URL:DIlink Protocol"
-"URL Protocol"=""
-
-[HKEY_CLASSES_ROOT\dilink\DefaultIcon]
-@="dilink.exe,1"
-
-[HKEY_CLASSES_ROOT\dilink\shell]
-
-[HKEY_CLASSES_ROOT\dilink\shell\open]
-
-[HKEY_CLASSES_ROOT\dilink\shell\open\command]
-@="\"\\\\10.0.200.100\\_lustre_INHouse\\Windows\\bin\\dilink.exe\" \"%1\""`
-
-// installDilink는 dilink를 설치하는 함수이다.
-func installDilink() {
-	user, err := user.Current()
-	if err != nil {
-		log.Fatal(err)
-	}
-	switch runtime.GOOS {
-	case "windows":
-		//gen_regcode
-		regfile, err := os.Create(user.HomeDir + "\\" + "dilink.reg")
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "dilink: can't create %s, %s\n", user.HomeDir+"\\"+"dilink.reg", err)
-		}
-		//윈도우즈라서 캐리지리턴으로 문자열을 바꾸었다.
-		if _, err := regfile.Write([]byte(strings.Replace(windowsRegcode, "\n", "\r\n", -1))); err != nil {
-			fmt.Fprintf(os.Stderr, "dilink: can't save %s, %s\n", user.HomeDir+"\\"+"dilink.reg", err)
-		}
-		regfile.Close()
-		fmt.Println(user.HomeDir + "\\" + "dilink.reg")
-		err = exec.Command("cmd", "/C", "start", "", user.HomeDir+"\\"+"dilink.reg").Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println("Dilink installed for windows.")
-		os.Exit(0)
-	case "darwin":
-		fmt.Println("macOS는 수동으로 브라우저에서 dilink를 설정해야 합니다.")
-		os.Exit(1)
-	case "linux":
-		err := exec.Command("gconftool-2", "--set", "/desktop/gnome/url-handlers/dilink/command", "--type=string", "/lustre/INHouse/CentOS/bin/dilink %s").Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		err = exec.Command("gconftool-2", "--set", "--type=bool", "/desktop/gnome/url-handlers/dilink/enabled", "true").Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		err = exec.Command("gconftool-2", "--set", "--type=bool", "/desktop/gnome/url-handlers/dilink/need-terminal", "false").Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println("Dilink installed for linux.")
-		os.Exit(0)
-	default:
-		fmt.Println("dilink를 설치할 수 없는 OS입니다.")
-		os.Exit(1)
-	}
-}
+const (
+	rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
+	rvLinuxAppPath   = "/opt/rv-Linux-x86-64-7.0.0/bin/rv"
+	rvMacosAppPath   = "/Applications/RV64.app/Contents/MacOS/RV64"
+)
 
 // Windows 액션
 func runWin(scape string) {
@@ -348,13 +286,9 @@ func main() {
 		fmt.Fprintf(os.Stdout, "dilink 설치를 원하시면 터미널에서 'dilink install'이라고 타이핑 해주세요.\n")
 		os.Exit(1)
 	}
-	// 프로토콜 설치
-	if flag.Args()[0] == "install" {
-		installDilink()
-	}
 	// dilink 프로토콜이 올바르게 써져있는지 체크함.
 	if !strings.HasPrefix(flag.Args()[0], "dilink://") {
-		fmt.Fprintf(os.Stdout, "인수가 dilink://로 시작하지 않습니다. 종료합니다.")
+		fmt.Fprintf(os.Stdout, "인수가 dilink://로 시작하지 않습니다. 종료합니다.\n")
 		os.Exit(1)
 	}
 	uri := strings.TrimPrefix(flag.Args()[0], "dilink://")
@@ -373,7 +307,7 @@ func main() {
 	case "windows":
 		runWin(scape)
 	default:
-		fmt.Fprintf(os.Stdout, "지원하지 않는 OS입니다.")
+		fmt.Fprintf(os.Stdout, "지원하지 않는 OS입니다.\n")
 		os.Exit(1)
 	}
 }
