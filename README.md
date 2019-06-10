@@ -28,7 +28,7 @@ $ tcsh ./install/linux/install_CentOS7_dev.sh // 개발자
 
 #### CentOS6
 ```bash
-$ bash install_CentOS6.sh
+$ bash ./install/linux/install_CentOS6.sh
 ```
 
 #### macOS
