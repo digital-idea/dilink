@@ -15,21 +15,24 @@
 
 #### Windows7
 ```bash
-$ start install_Windows7.reg
+$ start ./install/windows/install_Windows7.reg
 ```
 
 #### CentOS7
 터미널을 열고 아래처럼 명령어를 타이핑 합니다.
 
 ```bash
-$ tcsh install_CentOS7.sh // 사용자
-$ tcsh install_CentOS7_dev.sh // 개발자
+$ tcsh ./install/linux/install_CentOS7.sh // 사용자
+$ tcsh ./install/linux/install_CentOS7_dev.sh // 개발자
 ```
 
 #### CentOS6
 ```bash
 $ bash install_CentOS6.sh
 ```
+
+#### macOS
+
 
 #### HISTORY
 - '17.8.7 : 입체조건이면 입체 프리뷰 지원하도록 기능추가.

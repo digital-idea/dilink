@@ -298,13 +298,15 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	setProjectnShot(scape) //`$PROJECT, $SEQ, $SHOT 설정`
+	
 	switch runtime.GOOS {
 	case "darwin":
 		runMac(scape)
 	case "linux":
+		setProjectnShot(scape) //`digitalidea $PROJECT, $SEQ, $SHOT 설정`
 		runLin(scape)
 	case "windows":
+		setProjectnShot(scape) //`digitalidea $PROJECT, $SEQ, $SHOT 설정`
 		runWin(scape)
 	default:
 		fmt.Fprintf(os.Stdout, "지원하지 않는 OS입니다.\n")
