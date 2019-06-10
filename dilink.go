@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"os"
 	"os/exec"
+	"os/user"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -63,6 +64,15 @@ func runWin(scape string) {
 
 // macOS 액션
 func runMac(scape string) {
+	// ~ 문자로 시작하면 물리적인 홈디렉토리로 변경한다.
+	if strings.HasPrefix(scape, "~") {
+		usr, err := user.Current()
+		if err != nil {
+			log.Fatal(err)
+		}
+		dir := usr.HomeDir
+		scape = strings.Replace(scape, "~", dir, 1)
+	}
 	switch strings.ToLower(filepath.Ext(scape)) {
 	case ".nk":
 		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
@@ -281,6 +291,8 @@ func setProjectnShot(scape string) {
 }
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	log.SetPrefix("dilink: ")
 	flag.Parse()
 	if len(flag.Args()) < 1 {
 		fmt.Fprintf(os.Stdout, "명령를 실행하기 위한 인수가 충분하지 않습니다.\n")
@@ -298,7 +310,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	switch runtime.GOOS {
 	case "darwin":
 		runMac(scape)
