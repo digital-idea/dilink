@@ -32,6 +32,8 @@ $ bash install_CentOS6.sh
 ```
 
 #### macOS
+1. `install/macos/dilink.app` 파일을 어플리케이션에 복사합니다.
+1. dilink 명령어는 ~/bin 폴더에 넣습니다.
 
 
 #### HISTORY
