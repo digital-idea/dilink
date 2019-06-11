@@ -10,7 +10,6 @@ import (
 	"net/url"
 	"os"
 	"os/exec"
-	"os/user"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -56,40 +55,6 @@ func runWin(scape string) {
 		}
 	default:
 		err := exec.Command("cmd", "/C", "start", "", dipath.Lin2win(scape)).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-}
-
-// macOS 액션
-func runMac(scape string) {
-	// ~ 문자로 시작하면 물리적인 홈디렉토리로 변경한다.
-	if strings.HasPrefix(scape, "~") {
-		usr, err := user.Current()
-		if err != nil {
-			log.Fatal(err)
-		}
-		dir := usr.HomeDir
-		scape = strings.Replace(scape, "~", dir, 1)
-	}
-	switch strings.ToLower(filepath.Ext(scape)) {
-	case ".nk":
-		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
-		os.Setenv("NUKE_OFX", "/usr/OFX")
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
-		err := exec.Command(rvMacosAppPath, scape).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-	case ".mov", ".jpg":
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores코덱을 위해서 활성화 한다.
-		err := exec.Command(rvMacosAppPath, scape).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-	default:
-		err := exec.Command("open", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -313,7 +278,7 @@ func main() {
 
 	switch runtime.GOOS {
 	case "darwin":
-		runMac(scape)
+		MacOS(scape)
 	case "linux":
 		setProjectnShot(scape) //`digitalidea $PROJECT, $SEQ, $SHOT 설정`
 		runLin(scape)
