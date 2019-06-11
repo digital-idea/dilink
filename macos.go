@@ -16,7 +16,7 @@ func MacOS(scape string) {
 		os.Setenv("NUKE_PATH", Home2Abspath("~/nuke"))
 		os.Setenv("NUKE_FONT_PATH", Home2Abspath("~/nuke/font"))
 		os.Setenv("OCIO", Home2Abspath("~/OpenColorIO-Configs/aces_1.0.3/config.ocio"))
-		// 맥은 인터넷 연결되 되어있을 가능성이 높다. 언제나 논커머셜로 실행한다.
+		// 맥은 인터넷 연결되 되어있을 가능성이 높다. 항상 논커머셜로 실행한다.
 		err := exec.Command("/Applications/Nuke11.3v2/Nuke11.3v2.app/Contents/MacOS/Nuke11.3v2", "--nukex", "--nc", scape).Run()
 		if err != nil {
 			log.Fatal(err)
