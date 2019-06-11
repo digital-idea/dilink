@@ -48,6 +48,11 @@ func MacOS(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
+	case ".svg":
+		err := exec.Command("/Applications/Inkscape.app/Contents/MacOS/Inkscape", scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
 	default:
 		// 일반적으로 abc, hwp, 키노트등의 포멧은 open 명령어로 잘 작동된다.
 		err := exec.Command("open", scape).Run()
