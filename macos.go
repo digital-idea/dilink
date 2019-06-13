@@ -21,12 +21,14 @@ func MacOS(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".mov", ".jpg":
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores 코덱을 위해서 활성화 한다.
-		err := exec.Command(rvMacosAppPath, scape).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
+	/*
+		case ".mov", ".jpg":
+			os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores 코덱을 위해서 활성화 한다.
+			err := exec.Command(rvMacosAppPath, scape).Run()
+			if err != nil {
+				log.Fatal(err)
+			}
+	*/
 	case ".blend":
 		err := exec.Command("/Applications/Blender/blender.app/Contents/MacOS/blender", "--python", Home2Abspath("~/blender/init.py"), scape).Run()
 		if err != nil {
