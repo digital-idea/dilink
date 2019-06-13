@@ -7,9 +7,9 @@
 윈도우즈에서는 admin 계정으로 등록해주세요.
 
 ### Download
+- Linux: https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_linux_x86-64.tgz
+- macOS: https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_darwin_x86-64.tgz
 - Windows: 
-- macOS:
-- Linux: 
 
 ### dilink 설치
 
