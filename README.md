@@ -6,9 +6,9 @@
 응용프로그램을 웹에서 실행하기 위해서 제작되었습니다.
 
 ### Download
-- Linux: https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_linux_x86-64.tgz
-- macOS: https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_darwin_x86-64.tgz
-- Windows: 
+- [Linux 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_linux_x86-64.tgz)
+- [macOS 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0/dilink_darwin_x86-64.tgz)
+- Windows 64bit
 
 ### dilink 설치
 
