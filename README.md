@@ -7,9 +7,9 @@
 윈도우즈에서는 admin 계정으로 등록해주세요.
 
 ### Download
-- Windows:
+- Windows: 
 - macOS:
-- Linux:
+- Linux: 
 
 ### dilink 설치
 
