@@ -16,7 +16,7 @@ if ($status == 0) then
 [Desktop Entry]
 Name=DiLink
 Type=Application
-Exec=/lustre/INHouse/CentOS/bin/dilink %U
+Exec=/lustre/INHouse/app/csi/dilink/linux/dilink %U
 Terminal=false
 Categories=AudioVideo;Viewer;Player;
 MimeType=x-scheme-handler/dilink;

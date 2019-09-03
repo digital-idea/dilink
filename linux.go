@@ -22,14 +22,7 @@ func Linux(scape string) {
 		// dilink를 통해서 뉴크를 실행하기 때문에 dilink 도 umask 설정이 필요하다.
 		// 이렇게 설정이되어야 뉴크실행후 뉴크가 만드는 폴더에 대해서 권한문제가 발생하지 않는다.
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		os.Setenv("NUKE_PATH", "/lustre/INHouse/nuke")
-		os.Setenv("NUKE_OFX", "/usr/OFX")
-		os.Setenv("OPTICAL_FLARES_LICENSE_SERVER_IP", "10.0.99.15")
-		os.Setenv("BROWSER", "firefox")
-		os.Setenv("NUKE_FONT_PATH", "/lustre2/Digitalidea_source/2d_team_source/font")
-		os.Setenv("PYTHONPATH", "/lustre/INHouse/CentOS/python26/lib:/lustre/INHouse/CentOS/python26/lib/python2.6/site-packages")
-		os.Setenv("NUKE_USE_FAST_ALLOCATOR", "1")
-		err := exec.Command("/usr/local/Nuke10.0v5/Nuke10.0", "--nukex", scape).Run()
+		err := exec.Command("gnome-terminal", "-x", "nuke", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
