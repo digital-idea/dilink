@@ -15,5 +15,5 @@ func Home2Abspath(p string) string {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return strings.Replace(p, "~", usr.HomeDir, 1)
+	return usr.HomeDir + strings.TrimPrefix(p, "~")
 }
