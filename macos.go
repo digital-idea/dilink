@@ -30,8 +30,7 @@ func MacOS(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".mp4", ".mov", ".jpg": // DJV2 를 사용한다.
-		os.Setenv("RV_ENABLE_MIO_FFMPEG", "1") // Prores 코덱을 위해서 활성화 한다.
+	case ".mp4", ".mov", ".jpg": // DJV 를 사용한다.
 		err := exec.Command("/Applications/DJV.app/Contents/MacOS/DJV", scape).Run()
 		if err != nil {
 			log.Fatal(err)
