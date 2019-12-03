@@ -14,7 +14,7 @@
 
 #### Windows7
 
-디지털아이디어: //10.0.200.100/_lustre_INHouse/app/csi/dilink/windows/dilink.exe 에 파일을 복사합니다.
+`C:\bin\dilink.exe` 에 파일을 복사합니다.
 이후 아래 레지스트리를 실행합니다. 윈도우즈에서는 admin 계정으로 등록해주세요.
 ```bash
 $ start install_Windows7.reg

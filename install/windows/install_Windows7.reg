@@ -11,4 +11,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\dilink\shell\open]
 
 [HKEY_CLASSES_ROOT\dilink\shell\open\command]
-@="\"\\\\10.0.200.100\\_lustre_INHouse\\Windows\\bin\\dilink.exe\" \"%1\""
+@="\"C:\\bin\\dilink.exe\" \"%1\""

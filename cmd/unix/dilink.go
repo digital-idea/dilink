@@ -81,9 +81,6 @@ func main() {
 	case "linux":
 		setProjectnShot(scape) //`digitalidea $PROJECT, $SEQ, $SHOT 설정`
 		Linux(scape)
-	case "windows":
-		setProjectnShot(scape) //`digitalidea $PROJECT, $SEQ, $SHOT 설정`
-		Windows(scape)
 	default:
 		fmt.Fprintf(os.Stdout, "지원하지 않는 OS입니다.\n")
 		os.Exit(1)
