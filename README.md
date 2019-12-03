@@ -6,19 +6,16 @@
 응용프로그램을 웹에서 실행하기 위해서 제작되었습니다.
 
 ### Download
-- [Linux 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.1/dilink_linux_x86-64.tgz)
-- [macOS 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.1/dilink_darwin_x86-64.tgz)
-- Windows 64bit
+- [Linux 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.3/dilink_linux_x86-64.tgz)
+- [macOS 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.3/dilink_darwin_x86-64.tgz)
+- [Windows 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.3/dilink_windows_x86-64.zip)
 
 ### dilink 설치
 
 #### Windows7
 
 `C:\bin\dilink.exe` 에 파일을 복사합니다.
-이후 아래 레지스트리를 실행합니다. 윈도우즈에서는 admin 계정으로 등록해주세요.
-```bash
-$ start install_Windows7.reg
-```
+이후 install_Windows.reg 레지스트리를 실행합니다.
 
 #### CentOS7
 터미널을 열고 아래처럼 명령어를 타이핑 합니다.
