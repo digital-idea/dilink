@@ -12,7 +12,7 @@
 
 ### dilink 설치
 
-#### Windows7
+#### Windows10
 
 `C:\bin\dilink.exe` 에 파일을 복사합니다.
 이후 install_Windows.reg 레지스트리를 실행합니다.
@@ -20,15 +20,9 @@
 #### CentOS7
 터미널을 열고 아래처럼 명령어를 타이핑 합니다.
 
-디지털아이디어: /lustre/INHouse/app/csi/dilink/linux/dilink 에 파일을 복사합니다.
 ```bash
 $ tcsh install_CentOS7.sh // 사용자
 $ tcsh install_CentOS7_dev.sh // 개발자
-```
-
-#### CentOS6
-```bash
-$ bash install_CentOS6.sh
 ```
 
 #### macOS
