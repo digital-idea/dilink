@@ -1,6 +1,6 @@
 # dilink
 
-![travisCI](https://secure.travis-ci.org/digital-idea/dilink.png)
+![travisCI](https://secure.travis-ci.org/digital-idea/dilink.svg)
 
 웹에서 사용하기위한 웹 프로토콜입니다.
 응용프로그램을 웹에서 실행하기 위해서 제작되었습니다.
