@@ -14,8 +14,9 @@
 
 #### Windows10
 
-`C:\bin\dilink.exe` 에 파일을 복사합니다.
-이후 install_Windows.reg 레지스트리를 실행합니다.
+- `C:\bin` 폴더를 생성합니다.
+- 위 폴더에 `dilink.exe`, `install_Windows.reg` 파일을 복사합니다.
+- `install_Windows.reg` 파일을 더블클릭 합니다.
 
 #### CentOS7
 터미널을 열고 아래처럼 명령어를 타이핑 합니다.
