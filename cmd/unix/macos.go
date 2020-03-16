@@ -37,7 +37,7 @@ func MacOS(scape string) {
 		}
 	case ".blend":
 		os.Setenv("OCIO", Home2Abspath("~/OpenColorIO-Configs/aces_1.0.3/config.ocio"))
-		err := exec.Command(Home2Abspath("~/app/blender2.8/blender.app/Contents/MacOS/blender"), "--python", Home2Abspath("~/blender/init.py"), scape).Run()
+		err := exec.Command(Home2Abspath("~/app/blender2.83/blender.app/Contents/MacOS/Blender"), "--python", Home2Abspath("~/blender/init.py"), scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
