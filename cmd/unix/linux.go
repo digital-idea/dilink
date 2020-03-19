@@ -144,6 +144,16 @@ func Linux(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
+	case ".ma", ".mb":
+		os.Setenv("RMSTREE", "/opt/pixar/RenderManForMaya-21.6")
+		os.Unsetenv("MYENV")
+		syscall.Umask(0002) // 윈도우는 지원 안함.
+		// 차후 2018로 변경한다.
+		cmd := "/netapp/INHouse/Tool/Ecosystem/bin/ecosystem.py -t maya2017,usd -r maya"
+		err := exec.Command("mate-terminal", "-e", cmd, scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
 	case ".usd", ".usda":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		err := exec.Command("mate-terminal", "-e", "uview", scape).Run()
