@@ -22,7 +22,7 @@ func Linux(scape string) {
 		// dilink를 통해서 뉴크를 실행하기 때문에 dilink 도 umask 설정이 필요하다.
 		// 이렇게 설정이되어야 뉴크실행후 뉴크가 만드는 폴더에 대해서 권한문제가 발생하지 않는다.
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "-e", "nuke", scape).Run()
+		err := exec.Command("gnome-terminal", "-x", "nuke", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
