@@ -151,8 +151,7 @@ func Linux(scape string) {
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		// 차후 2018로 변경한다.
 		// 환경변수 정리전까지는 바닐라 마야만 적용
-		cmd := "/usr/autodesk/maya2017/bin/maya -file"
-		err := exec.Command("mate-terminal", "-e", cmd, scape)).Run()
+		err := exec.Command("mate-terminal", "-e", "/usr/autodesk/maya2017/bin/maya", "-file", scape)).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
