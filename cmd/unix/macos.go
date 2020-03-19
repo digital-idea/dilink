@@ -52,13 +52,6 @@ func MacOS(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".ntp":
-		os.Setenv("NATRON_PLUGIN_PATH", Home2Abspath("~/natron"))
-		os.Setenv("OCIO", Home2Abspath("~/OpenColorIO-Configs/aces_1.0.3/config.ocio"))
-		err := exec.Command("/Applications/Natron.app/Contents/MacOS/Natron", scape).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 	case ".svg":
 		err := exec.Command("/Applications/Inkscape.app/Contents/MacOS/Inkscape", scape).Run()
 		if err != nil {
