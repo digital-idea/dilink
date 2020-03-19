@@ -148,9 +148,9 @@ func Linux(scape string) {
 	case ".ma", ".mb":
 		os.Setenv("MAYA_VERSION", "2017")
 		os.Setenv("RMSTREE", "/opt/pixar/RenderManForMaya-21.6")
-		os.Unsetenv("MYENV")
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		// 차후 2018로 변경한다.
+		// 환경변수 정리전까지는 바닐라 마야만 적용
 		cmd := "/usr/autodesk/maya2017/bin/maya -file"
 		err := exec.Command("mate-terminal", "-e", cmd, scape)).Run()
 		if err != nil {
