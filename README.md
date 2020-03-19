@@ -31,6 +31,12 @@ $ tcsh install_CentOS7_dev.sh // 개발자
 1. `dilink.app` 파일을 어플리케이션에 복사합니다.
 1. dilink 명령어는 ~/bin 폴더에 넣습니다.
 
+### Test실행
+터미널을 이용해서 실제로 dilink가 잘 작동되는지 체크해볼 수 있습니다.
+
+```bash
+$ dilink dilink:///file/path/test.blend
+```
 
 ### License
 BSD 3-Clause License
