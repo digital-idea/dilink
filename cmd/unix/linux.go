@@ -4,7 +4,6 @@ package main
 // dilink 명령어에 URL 값을 넘겨 관련 응용프로그램을 실행하는 프로그램이다.
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -151,7 +150,7 @@ func Linux(scape string) {
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		// 차후 2018로 변경한다.
 		// 환경변수 정리전까지는 바닐라 마야만 적용
-		err := exec.Command("mate-terminal", "-e", "/usr/autodesk/maya2017/bin/maya", "-file", scape)).Run()
+		err := exec.Command("mate-terminal", "-e", "/usr/autodesk/maya2017/bin/maya", "-file", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
