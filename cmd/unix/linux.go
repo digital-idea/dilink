@@ -134,13 +134,13 @@ func Linux(scape string) {
 			log.Fatal(err)
 		}
 	case ".sh":
-		err := exec.Command("mate-terminal", "--profile", "/home/`expr substr $USER 13 6`/.bashrc", "-x", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "/bin/sh", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".hip":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "--profile", "/home/`expr substr $USER 13 6`/.bashrc", "-x", "h", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "h", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -150,13 +150,13 @@ func Linux(scape string) {
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		// 차후 2018로 변경한다.
 		// 환경변수 정리전까지는 바닐라 마야만 적용
-		err := exec.Command("mate-terminal", "--profile", "/home/`expr substr $USER 13 6`/.bashrc", "-x", "/usr/autodesk/maya2017/bin/maya", "-file", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "/usr/autodesk/maya2017/bin/maya", "-file", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".usd", ".usda":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "--profile", "/home/`expr substr $USER 13 6`/.bashrc", "-x", "uview", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "uview", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
