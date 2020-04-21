@@ -168,8 +168,8 @@ func Linux(scape string) {
 			log.Fatal(err)
 		}
 		release := strings.TrimSuffix(string(out), "\n")
-		if strings.Contains(release, "CentOS Linux release 7.2.1511 (Core)") {
-			// 회사는 CentOS7에서는 caja를 기본 브라우저로 사용한다.
+		// 회사는 CentOS7.x 에서는 caja를 기본 브라우저로 사용한다.
+		if strings.Contains(release, "CentOS Linux release 7.") {
 			browser = "caja"
 		}
 		err = exec.Command(browser, scape).Run()
