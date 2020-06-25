@@ -158,13 +158,19 @@ func Linux(scape string) {
 		}
 	case ".3de":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "-x", "-open", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "e", "-open", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".katana":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "-x", "--asset", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "katana", "--asset", scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+	case ".project":
+		syscall.Umask(0002) // 윈도우는 지원 안함.
+		err := exec.Command("mate-terminal", "-x", "clarisse", "-config_file", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
