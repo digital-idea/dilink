@@ -134,29 +134,37 @@ func Linux(scape string) {
 			log.Fatal(err)
 		}
 	case ".sh":
-		err := exec.Command("mate-terminal", "-e", scape).Run()
+		err := exec.Command("mate-terminal", "-x", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".hip":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "-e", "h", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "h", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".ma", ".mb":
-		os.Setenv("MAYA_VERSION", "2017")
-		os.Setenv("RMSTREE", "/opt/pixar/RenderManForMaya-21.6")
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		// 차후 2018로 변경한다.
-		// 환경변수 정리전까지는 바닐라 마야만 적용
-		err := exec.Command("mate-terminal", "-e", "/usr/autodesk/maya2017/bin/maya", "-file", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "m", "-f", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
 	case ".usd", ".usda":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
-		err := exec.Command("mate-terminal", "-e", "uview", scape).Run()
+		err := exec.Command("mate-terminal", "-x", "uview", scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+	case ".3de":
+		syscall.Umask(0002) // 윈도우는 지원 안함.
+		err := exec.Command("mate-terminal", "-x", "-open", scape).Run()
+		if err != nil {
+			log.Fatal(err)
+		}
+	case ".katana":
+		syscall.Umask(0002) // 윈도우는 지원 안함.
+		err := exec.Command("mate-terminal", "-x", "--asset", scape).Run()
 		if err != nil {
 			log.Fatal(err)
 		}
