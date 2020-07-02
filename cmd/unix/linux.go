@@ -150,7 +150,7 @@ func Linux(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".usd", ".usda":
+	case ".usd", ".usda", ".usdc", ".usdz":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		err := exec.Command("mate-terminal", "-x", "uview", scape).Run()
 		if err != nil {
@@ -170,6 +170,7 @@ func Linux(scape string) {
 		}
 	case ".project":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
+		// clarisse는 옵션이 없이 파일로 캐치하지만, 편의성을 위해 커맨드명령이 있을때 실행한다.
 		err := exec.Command("mate-terminal", "-x", "clarisse", "-config_file", scape).Run()
 		if err != nil {
 			log.Fatal(err)
