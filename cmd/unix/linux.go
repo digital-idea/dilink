@@ -113,11 +113,6 @@ func Linux(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".abc":
-		err := exec.Command("/lustre/INHouse/CentOS/bin/abcview", scape).Run()
-		if err != nil {
-			log.Fatal(err)
-		}
 	case ".pdf":
 		err := exec.Command("/usr/bin/evince", scape).Run()
 		if err != nil {
