@@ -150,7 +150,7 @@ func Linux(scape string) {
 		if err != nil {
 			log.Fatal(err)
 		}
-	case ".usd", ".usda", ".usdc", ".usdz":
+	case ".usd", ".usda", ".usdc", ".usdz", ".abc":
 		syscall.Umask(0002) // 윈도우는 지원 안함.
 		err := exec.Command("mate-terminal", "-x", "uview", scape).Run()
 		if err != nil {
