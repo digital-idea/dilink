@@ -8,7 +8,7 @@
 ### Download
 - [Linux 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.5/dilink_linux_x86-64.tgz)
 - [macOS 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.5/dilink_darwin_x86-64.tgz)
-- [Windows 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.3/dilink_windows_x86-64.zip)
+- [Windows 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.4/dilink_windows_x86-64.zip)
 
 ### dilink 설치
 
