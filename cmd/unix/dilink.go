@@ -14,10 +14,10 @@ import (
 
 	"github.com/digital-idea/dipath"
 )
-// rv7.2.0 버전에서 ocio 셋팅을 불러오기 위해서 에코시스템의 rv2를 불러오게 경로를 설정한다.
+
 const (
 	rvWindowsAppPath = "C:\\Program Files\\Shotgun\\RV-7.0\\bin\\rv.exe"
-	rvLinuxAppPath   = "/lustre/INHouse/Tool/Ecosystem/bin/rv2"
+	rvLinuxAppPath   = "/opt/rv-Linux-x86-64-7.2.0/bin/rv"
 	rvMacosAppPath   = "/Applications/RV64.app/Contents/MacOS/RV64"
 	protocol         = "dilink://"
 )
