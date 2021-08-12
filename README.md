@@ -5,11 +5,6 @@
 웹에서 사용하기위한 웹 프로토콜입니다.
 응용프로그램을 웹에서 실행하기 위해서 제작되었습니다.
 
-### Download
-- [Linux 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.5/dilink_linux_x86-64.tgz)
-- [macOS 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.5/dilink_darwin_x86-64.tgz)
-- [Windows 64bit](https://github.com/digital-idea/dilink/releases/download/v1.0.4/dilink_windows_x86-64.zip)
-
 ### dilink 설치
 
 #### Windows10
